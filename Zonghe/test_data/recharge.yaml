@@ -1,0 +1,18 @@
+# 充值成功
+- register: {"mobilephone":"18066668888","pwd":"abcd_1"}
+  data: {"mobilephone":"18066668888","amount":"80"}
+  expect: {"code":'10001',"data":{},"msg":"充值成功","status":1}
+
+# 充值失败--手机号码不存在
+- register: {"mobilephone":"18066668888","pwd":"abcd_1"}
+  data: {"mobilephone":"18066668880","amount":"80"}
+  expect: {"code":'20104',"data":{},"msg":"此手机号对应的会员不存在","status":0}
+
+# 充值失败--不输充值金额
+- register: {"mobilephone":"18066668888","pwd":"abcd_1"}
+  data: {"mobilephone":"18066668888","amount":""}
+  expect: {"code":'20115',"data":{},"msg":"请输入金额","status":0}
+
+- register: {"mobilephone":"18066668888","pwd":"abcd_1"}
+  data: {"mobilephone":"18066668888","amount":"100000000000.11"}
+  expect: {"code":'20116',"data":{},"msg":"输入金额的金额小数不能超过两位","status":1}

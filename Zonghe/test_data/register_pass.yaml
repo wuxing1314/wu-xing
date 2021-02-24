@@ -1,0 +1,2 @@
+- data: { "mobilephone": '18011111114',"pwd": "1234567" ,"rename":"ergouzi"}
+  expect: { "status": 1,"code": '10001',"data": None,"msg": "注册成功" }
